@@ -5,8 +5,11 @@ _Note:_ I forgot to do with GraphQL. But if needed, just ask me and I'll add it 
 - The code is available at: `https://github.com/hpandelo/santex-be-test` (Private repo). You can request access if needed
 
 ## How to Run:
-
-- Just run: `docker compose up -d`
+- Copy the `.env.example` file
+- Add fill the `FOOTBALL_DATA_API_TOKEN` environment variable at your `.env` file
+- Just run:
+  - `npm install && npm run prepare`
+  - `docker compose up -d`
 - Observe the logs, It will import the data automatically at startup and will take some minutes due to API Rate Limits
 
 ## DOCKER AND DOCKER COMPOSE
