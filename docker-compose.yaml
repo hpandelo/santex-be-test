@@ -24,8 +24,8 @@ services:
     command: redis-server --requirepass redis_p
     ports:
       - 6379:6379
-    # volumes:
-    #   - redis:/data
+    volumes:
+      - redis:/data
 
 volumes:
   redis:

@@ -10,7 +10,7 @@ ENV NODE_ENV production
 RUN --mount=type=cache,target=/usr/src/app/ \
     --mount=type=bind,source=package.json,target=package.json\
     --mount=type=bind,source=package-lock.json,target=package-lock.json\
-    npm install --omit=dev
+    npm ci --omit=dev
 
 # ----------------------------------------------------------------
 
@@ -21,7 +21,8 @@ WORKDIR /usr/src/app
 RUN --mount=type=cache,target=/usr/src/app/ \
     --mount=type=bind,source=package.json,target=package.json\
     --mount=type=bind,source=package-lock.json,target=package-lock.json\
-    npm ci --omit=optional
+    npm ci \
+    npm run prepare
 
 # RUN npm run prisma:generate
 

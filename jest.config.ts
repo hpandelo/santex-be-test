@@ -6,18 +6,28 @@ const config: Config = {
   clearMocks: true,
   verbose: false,
 
-  preset: "ts-jest",
-  testEnvironment: "node",
-  roots: ["<rootDir>/src"],
-  testMatch: [ "**/?(*.)+(spec|test).+(ts|js)" ],
-  transform: { "^.+\\.(ts)$": "ts-jest" },
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src'],
+  testMatch: ['**/?(*.)+(spec|test).+(ts|js)'],
+  transform: { '^.+\\.(ts)$': 'ts-jest' },
+
+  // Threshoulds
+  coverageThreshold: {
+    global: {
+      branches: 40,
+      functions: 40,
+      lines: 40,
+      statements: 40,
+    },
+  },
 
   // Coverage Setup
   collectCoverage: true,
-  coverageProvider: "v8",
-  coverageDirectory: "coverage",
-  coverageReporters: ["html", ['text', {skipFull: true}], "text-summary"],
-  coveragePathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/"],
+  coverageProvider: 'v8',
+  coverageDirectory: 'coverage',
+  coverageReporters: ['html', ['text', { skipFull: true }], 'text-summary'],
+  coveragePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
   collectCoverageFrom: [
     './src/**/*.{js,ts}',
     '!./src/{app,server}.{js,ts}',
@@ -26,7 +36,6 @@ const config: Config = {
     '!./src/**/*.route.{js,ts}',
     '!**/node_modules/**',
   ],
-
 }
 
 export default config
