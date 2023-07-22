@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  santex-dev:
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    command: npm run start:dev
+    container_name: santex-dev
+    restart: always
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7.0.8-alpine
+    container_name: santex-redis
+    command: redis-server --requirepass redis_p
+    ports:
+      - 6379:6379
+    # volumes:
+    #   - redis:/data
+
+volumes:
+  redis:
+    driver: local
